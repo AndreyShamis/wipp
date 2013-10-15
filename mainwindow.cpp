@@ -14,15 +14,49 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->txtLog->setText(this->ReadCommand("a"));
-    ui->txtLog->setText(this->Run("wpa_cli status"));
-    ui->txtLog->setText(this->RunCmd("wpa_cli status").std_err);
+
+
+    //ui->txtLog->setText(this->ReadCommand("a"));
+    //ui->txtLog->setText(this->Run("wpa_cli status"));
+    //ui->txtLog->setText(this->RunCmd("wpa_cli status").std_err);
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::BSSScan()
+{
+    QString cmd = this->ReadCommand("bss_scan");
+    cmdRes res = this->RunCmd(cmd);
+    if(res.std_err.length() > 0)
+    {
+        ui->txtLog->append("Error["+ cmd +"]:" + res.std_err);
+    }
+    else
+    {
+        ui->txtLog->append("Start Scan");
+    }
+}
+
+void MainWindow::BSSScanResult()
+{
+    QString str = " | grep -E -o '[[:xdigit:]]{2}(:[[:xdigit:]]{2}){5}[[:space:]][[:xdigit:]]{4}[[:space:]]\-[[:xdigit:]]{1,3}'";
+    cmdRes res = this->RunCmd(this->ReadCommand("bss_get_scan_res" + str));
+    if(res.std_err.length() > 0)
+    {
+        ui->txtLog->append("Error" + res.std_err);
+    }
+    else
+    {
+        QStringList fields = res.std_out.split("=");
+        foreach (QString t, fields)
+        {
+            ui->txtLog->append(t);
+        }
+    }
 }
 
 QString MainWindow::Run(QString cmd)
@@ -77,4 +111,9 @@ QString MainWindow::ReadCommand(QString val)
     file.close();
 
     return ret;
+}
+
+void MainWindow::on_btnScanBSS_clicked()
+{
+    this->BSSScan();
 }

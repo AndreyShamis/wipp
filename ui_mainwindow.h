@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue Oct 15 16:58:07 2013
+** Created: Tue Oct 15 18:02:48 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,6 +15,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QHeaderView>
+#include <QtGui/QListView>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
@@ -32,6 +33,9 @@ public:
     QPushButton *pushButton;
     QTextEdit *txtLog;
     QTextEdit *textEdit;
+    QListView *lstAP;
+    QPushButton *btnGetBSS;
+    QPushButton *btnScanBSS;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -48,10 +52,19 @@ public:
         pushButton->setGeometry(QRect(250, 10, 80, 23));
         txtLog = new QTextEdit(centralWidget);
         txtLog->setObjectName(QString::fromUtf8("txtLog"));
-        txtLog->setGeometry(QRect(10, 50, 621, 261));
+        txtLog->setGeometry(QRect(10, 50, 621, 431));
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(770, 80, 104, 70));
+        textEdit->setGeometry(QRect(680, 20, 104, 70));
+        lstAP = new QListView(centralWidget);
+        lstAP->setObjectName(QString::fromUtf8("lstAP"));
+        lstAP->setGeometry(QRect(840, 40, 281, 431));
+        btnGetBSS = new QPushButton(centralWidget);
+        btnGetBSS->setObjectName(QString::fromUtf8("btnGetBSS"));
+        btnGetBSS->setGeometry(QRect(920, 10, 80, 23));
+        btnScanBSS = new QPushButton(centralWidget);
+        btnScanBSS->setObjectName(QString::fromUtf8("btnScanBSS"));
+        btnScanBSS->setGeometry(QRect(840, 10, 80, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -73,6 +86,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "PushButton", 0, QApplication::UnicodeUTF8));
+        btnGetBSS->setText(QApplication::translate("MainWindow", "BSS", 0, QApplication::UnicodeUTF8));
+        btnScanBSS->setText(QApplication::translate("MainWindow", "Scan", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
