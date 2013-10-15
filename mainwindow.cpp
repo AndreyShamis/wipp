@@ -90,7 +90,7 @@ cmdRes MainWindow::RunCmd(QString cmd)
 QString MainWindow::ReadCommand(QString val)
 {
     QString ret;
-    QFile file("/home/andy/wipp.settings");
+    QFile file("./wipp.settings");
     if(!file.open(QIODevice::ReadOnly)) {
         QMessageBox::information(0, "error", file.errorString());
     }
