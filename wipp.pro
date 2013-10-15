@@ -19,3 +19,6 @@ HEADERS  += mainwindow.h \
     common.h
 
 FORMS    += mainwindow.ui
+
+OTHER_FILES += \
+    wipp.settings

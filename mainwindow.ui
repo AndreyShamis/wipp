@@ -14,45 +14,22 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>10</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="txtLog">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>621</width>
-      <height>431</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>20</y>
-      <width>104</width>
-      <height>70</height>
+      <x>0</x>
+      <y>140</y>
+      <width>601</width>
+      <height>321</height>
      </rect>
     </property>
    </widget>
    <widget class="QListView" name="lstAP">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>40</y>
-      <width>281</width>
+      <x>610</x>
+      <y>30</y>
+      <width>221</width>
       <height>431</height>
      </rect>
     </property>
@@ -60,8 +37,8 @@
    <widget class="QPushButton" name="btnGetBSS">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>10</y>
+      <x>690</x>
+      <y>0</y>
       <width>80</width>
       <height>23</height>
      </rect>
@@ -73,14 +50,96 @@
    <widget class="QPushButton" name="btnScanBSS">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>10</y>
+      <x>610</x>
+      <y>0</y>
       <width>80</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Scan</string>
+    </property>
+   </widget>
+   <widget class="QListView" name="lstP2PPeers">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>30</y>
+      <width>221</width>
+      <height>431</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnP2pFind">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>0</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>P2P Find</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnP2pPeers">
+    <property name="geometry">
+     <rect>
+      <x>920</x>
+      <y>0</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>P2P Peers</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>WiFi Interfaces</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>P2P Interfaces</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="lstWiFiInterfaces">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="lstP2PInterfaces">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>30</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
     </property>
    </widget>
   </widget>

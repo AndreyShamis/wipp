@@ -19,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->txtLog->setText(this->ReadCommand("a"));
     //ui->txtLog->setText(this->Run("wpa_cli status"));
     //ui->txtLog->setText(this->RunCmd("wpa_cli status").std_err);
+    //Create Our Item
+   // QListWidgetItem *item=new QListWidgetItem(QIcon(":/images/Icon.png"),structLocationDetails[i].strlocationName);
+  //  ui->lstWiFiInterfaces->AboveItem
+      ui->lstWiFiInterfaces->addItem("wlan0");
 
 }
 
@@ -41,6 +45,34 @@ void MainWindow::BSSScan()
     }
 }
 
+void MainWindow::P2PFind()
+{
+    QString cmd = this->ReadCommand("p2p_find");
+    cmdRes res = this->RunCmd(cmd);
+    if(res.std_err.length() > 0)
+    {
+        ui->txtLog->append("Error["+ cmd +"]:" + res.std_err);
+    }
+    else
+    {
+        ui->txtLog->append("Start Scan");
+    }
+}
+
+void MainWindow::P2PPeers()
+{
+    QString cmd = this->ReadCommand("p2p_peers");
+    cmdRes res = this->RunCmd(cmd);
+    if(res.std_err.length() > 0)
+    {
+        ui->txtLog->append("Error["+ cmd +"]:" + res.std_err);
+    }
+    else
+    {
+        ui->txtLog->append("Here is p2p peers:");
+    }
+}
+
 void MainWindow::BSSScanResult()
 {
     QString str = " | grep -E -o '[[:xdigit:]]{2}(:[[:xdigit:]]{2}){5}[[:space:]][[:xdigit:]]{4}[[:space:]]\-[[:xdigit:]]{1,3}'";
@@ -51,6 +83,7 @@ void MainWindow::BSSScanResult()
     }
     else
     {
+        ui->txtLog->append("Here is results:");
         QStringList fields = res.std_out.split("=");
         foreach (QString t, fields)
         {
@@ -116,4 +149,19 @@ QString MainWindow::ReadCommand(QString val)
 void MainWindow::on_btnScanBSS_clicked()
 {
     this->BSSScan();
+}
+
+void MainWindow::on_btnGetBSS_clicked()
+{
+    this->BSSScanResult();
+}
+
+void MainWindow::on_btnP2pFind_clicked()
+{
+    this->P2PFind();
+}
+
+void MainWindow::on_btnP2pPeers_clicked()
+{
+    this->P2PPeers();
 }

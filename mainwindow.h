@@ -19,7 +19,15 @@ public:
 private slots:
     void on_btnScanBSS_clicked();
 
+    void on_btnGetBSS_clicked();
+
+    void on_btnP2pFind_clicked();
+
+    void on_btnP2pPeers_clicked();
+
 private:
+    void        P2PFind();
+    void        P2PPeers();
     Ui::MainWindow *ui;
     QString     ReadCommand(QString val);
     QString     Run(QString cmd);
