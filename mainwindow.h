@@ -3,6 +3,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QProcess>
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +31,7 @@ private slots:
 
 private:
     void        P2PFind();
+    void        getRssi(QString interface);
     void        P2PPeers();
     Ui::MainWindow *ui;
     QString     ReadCommand(QString val);

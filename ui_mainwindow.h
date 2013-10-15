@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue Oct 15 23:06:27 2013
+** Created: Tue Oct 15 23:26:45 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -43,6 +43,8 @@ public:
     QLabel *label_2;
     QListWidget *lstWiFiInterfaces;
     QListWidget *lstP2PInterfaces;
+    QLabel *lblRSSI;
+    QLabel *lblRSSIValue;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -51,15 +53,15 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1140, 529);
+        MainWindow->resize(1067, 509);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         txtLog = new QTextEdit(centralWidget);
         txtLog->setObjectName(QString::fromUtf8("txtLog"));
-        txtLog->setGeometry(QRect(0, 140, 601, 321));
+        txtLog->setGeometry(QRect(0, 150, 601, 321));
         lstAP = new QListView(centralWidget);
         lstAP->setObjectName(QString::fromUtf8("lstAP"));
-        lstAP->setGeometry(QRect(610, 30, 221, 431));
+        lstAP->setGeometry(QRect(610, 30, 221, 441));
         btnGetBSS = new QPushButton(centralWidget);
         btnGetBSS->setObjectName(QString::fromUtf8("btnGetBSS"));
         btnGetBSS->setGeometry(QRect(690, 0, 80, 23));
@@ -68,7 +70,7 @@ public:
         btnScanBSS->setGeometry(QRect(610, 0, 80, 23));
         lstP2PPeers = new QListView(centralWidget);
         lstP2PPeers->setObjectName(QString::fromUtf8("lstP2PPeers"));
-        lstP2PPeers->setGeometry(QRect(840, 30, 221, 431));
+        lstP2PPeers->setGeometry(QRect(840, 30, 221, 441));
         btnP2pFind = new QPushButton(centralWidget);
         btnP2pFind->setObjectName(QString::fromUtf8("btnP2pFind"));
         btnP2pFind->setGeometry(QRect(840, 0, 80, 23));
@@ -87,10 +89,16 @@ public:
         lstP2PInterfaces = new QListWidget(centralWidget);
         lstP2PInterfaces->setObjectName(QString::fromUtf8("lstP2PInterfaces"));
         lstP2PInterfaces->setGeometry(QRect(120, 30, 101, 111));
+        lblRSSI = new QLabel(centralWidget);
+        lblRSSI->setObjectName(QString::fromUtf8("lblRSSI"));
+        lblRSSI->setGeometry(QRect(230, 10, 31, 16));
+        lblRSSIValue = new QLabel(centralWidget);
+        lblRSSIValue->setObjectName(QString::fromUtf8("lblRSSIValue"));
+        lblRSSIValue->setGeometry(QRect(270, 10, 41, 16));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1140, 20));
+        menuBar->setGeometry(QRect(0, 0, 1067, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -106,13 +114,15 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "WIPP", 0, QApplication::UnicodeUTF8));
         btnGetBSS->setText(QApplication::translate("MainWindow", "BSS", 0, QApplication::UnicodeUTF8));
         btnScanBSS->setText(QApplication::translate("MainWindow", "Scan", 0, QApplication::UnicodeUTF8));
         btnP2pFind->setText(QApplication::translate("MainWindow", "P2P Find", 0, QApplication::UnicodeUTF8));
         btnP2pPeers->setText(QApplication::translate("MainWindow", "P2P Peers", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "WiFi Interfaces", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "P2P Interfaces", 0, QApplication::UnicodeUTF8));
+        lblRSSI->setText(QApplication::translate("MainWindow", "RSSI", 0, QApplication::UnicodeUTF8));
+        lblRSSIValue->setText(QApplication::translate("MainWindow", "-100", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1140</width>
-    <height>529</height>
+    <width>1067</width>
+    <height>509</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>WIPP</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTextEdit" name="txtLog">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>140</y>
+      <y>150</y>
       <width>601</width>
       <height>321</height>
      </rect>
@@ -30,7 +30,7 @@
       <x>610</x>
       <y>30</y>
       <width>221</width>
-      <height>431</height>
+      <height>441</height>
      </rect>
     </property>
    </widget>
@@ -66,7 +66,7 @@
       <x>840</x>
       <y>30</y>
       <width>221</width>
-      <height>431</height>
+      <height>441</height>
      </rect>
     </property>
    </widget>
@@ -142,13 +142,39 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="lblRSSI">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>10</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RSSI</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRSSIValue">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>10</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-100</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1140</width>
+     <width>1067</width>
      <height>20</height>
     </rect>
    </property>

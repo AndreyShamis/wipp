@@ -3,3 +3,4 @@ bss_scan=sudo wpa_cli -i wlan0 scan
 bss_get_scan_res=sudo wpa_cli -i wlan0 scan_result
 p2p_find=sudo wpa_cli -i p2p0 p2p_find
 p2p_peers=sudo wpa_cli -i p2p0 p2p_peers
+signal_poll=sudo wpa_cli -i wlan0 signal_poll
