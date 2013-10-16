@@ -7,15 +7,94 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //ui->txtLog->setText(this->ReadCommand("a"));
-    //ui->txtLog->setText(this->Run("wpa_cli status"));
-    //ui->txtLog->setText(this->RunCmd("wpa_cli status").std_err);
-      ui->lstWiFiInterfaces->addItem("wlan0");
+    this->scanned = false;
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateCaption()));
+    timer->start(1000);
+
+    QTimer *timer2 = new QTimer(this);
+    connect(timer2, SIGNAL(timeout()), this, SLOT(FastTimer()));
+    timer2->start(300);
+}
+
+void MainWindow::FastTimer()
+{
+    //this->getPhy80211Devices();
+    this->GUI_UpdateInetDevices();
+}
+
+void MainWindow::GUI_UpdateInetDevices()
+{
+    //QList<netInterface> temp = interf;
+    this->UpdateNetInterfaces();
+
+    //if(temp != interf)
+    //{
+        ui->treeLblAllInterfaces->clear();
+        foreach (netInterface sta, interf) {
+            QTreeWidget * tree = ui->treeLblAllInterfaces;
+
+            QTreeWidgetItem * topLevel = new QTreeWidgetItem();
+            topLevel->setText(0, sta.NAME );
+            topLevel->setText(1, sta.MAC_ADDR);
+            topLevel->setText(2, sta.IP_ADDR);
+            tree->addTopLevelItem(topLevel);
+        }
+    //}
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+cmdRes MainWindow::RunLs(QString paramsAndPath)
+{
+    cmdRes ret;
+    QProcess p;
+    p.setProcessChannelMode(QProcess::MergedChannels);
+
+    p.start("ls",paramsAndPath.split(" ") );
+    p.waitForFinished(-1);
+
+    QString p_stdout = p.readAllStandardOutput();
+    QString p_stderr = p.readAllStandardError();
+    ret.std_out = p_stdout;
+    ret.std_err = p_stderr;
+
+    return ret;
+}
+
+cmdRes MainWindow::RunScript(QString scriptPath,QString params)
+{
+    cmdRes ret;
+    QProcess p;
+    p.setProcessChannelMode(QProcess::MergedChannels);
+
+    p.start(scriptPath,params.split(" "));
+    p.waitForFinished(-1);
+
+    QString p_stdout = p.readAllStandardOutput();
+    QString p_stderr = p.readAllStandardError();
+    ret.std_out = p_stdout;
+    ret.std_err = p_stderr;
+
+    return ret;
+}
+
+void MainWindow::getPhy80211Devices()
+{
+    QString cmd = "/sys/class/net/";
+    cmdRes res = this->RunLs(cmd);
+    if(res.std_err.length() > 0)
+        ui->txtLog->append("Error["+ cmd +"]:" + res.std_err);
+    else
+    {
+        //ui->lstAllInterfaces->clear();
+        QStringList fields = res.std_out.split('\n');
+        foreach (QString temp, fields) {
+         //   ui->lstAllInterfaces->addItem(temp);
+        }
+    }
 }
 
 void MainWindow::BSSScan()
@@ -84,11 +163,10 @@ void MainWindow::BSSScanResult()
     }
     else
     {
-        //ui->txtLog->append("Here is results:" + res.std_out);
         QStringList fields = res.std_out.split('\n');
+        this->bss_sta.clear();
         foreach (QString t, fields)
         {
-
             QStringList fields2 = t.split('\t');
             if(fields2.length() > 3)
             {
@@ -97,19 +175,33 @@ void MainWindow::BSSScanResult()
                 sta.SSID     = fields2[4];
                 sta.RSSI     = fields2[2].toInt();
                 sta.Frequency=fields2[1].toInt();
-                this->PrintWPA_STA(sta);
-      //          foreach (QString t2, fields2)
-       //         {
-       //             ui->txtLog->append(t2);
-       //         }
+                //this->PrintWPA_STA(sta);
+                bss_sta.append(sta);
             }
         }
+        this->PrintWPA_STAs();
     }
 }
 
 void MainWindow::PrintWPA_STA(wpa_cli_sta sta)
 {
-    ui->txtLog->append("Device: " + sta.SSID + " MAC: " + sta.MAC_ADDR + " Freq: " + QString::number(sta.Frequency) + " RSSI: " + QString::number(sta.RSSI));
+    QTreeWidget * tree = ui->treeBSSSTA;
+
+    QTreeWidgetItem * topLevel = new QTreeWidgetItem();
+    topLevel->setText(0, sta.SSID );
+    topLevel->setText(1, sta.MAC_ADDR);
+    topLevel->setText(2, QString::number(sta.Frequency));
+    topLevel->setText(3, QString::number(sta.RSSI));
+    tree->addTopLevelItem(topLevel);
+}
+
+void MainWindow::PrintWPA_STAs()
+{
+    ui->treeBSSSTA->clear();
+
+    foreach (wpa_cli_sta sta, bss_sta) {
+        this->PrintWPA_STA(sta);
+    }
 }
 
 void MainWindow::getRssi(QString interface)
@@ -134,6 +226,8 @@ QString MainWindow::Run(QString cmd)
     return temp.std_out;
 }
 
+
+
 cmdRes MainWindow::RunCmd(QString cmd)
 {
     cmdRes ret;
@@ -144,6 +238,7 @@ cmdRes MainWindow::RunCmd(QString cmd)
     //    ui->txtLog->append(temp);
     //}
     p.waitForFinished(-1);
+
     QString p_stdout = p.readAllStandardOutput();
     QString p_stderr = p.readAllStandardError();
     ret.std_out = p_stdout;
@@ -179,10 +274,24 @@ QString MainWindow::ReadCommand(QString val)
 void MainWindow::on_btnScanBSS_clicked()
 {
     this->BSSScan();
+    this->scanned = true;
+}
+
+void MainWindow::updateCaption()
+{
+    this->BSSScanResult();
 }
 
 void MainWindow::on_btnGetBSS_clicked()
 {
+    if(!this->scanned )
+    {
+        this->BSSScan();
+        sleep(3);
+
+        this->scanned = true;
+    }
+
     this->BSSScanResult();
 }
 
@@ -212,4 +321,45 @@ void MainWindow::on_btnModprobeR_clicked()
 {
     this->Modprobe("iwlmvm",true);
     this->Modprobe("iwlwifi",true);
+}
+
+void MainWindow::on_btnPrintBss_clicked()
+{
+    this->PrintWPA_STAs();
+}
+
+QString MainWindow::getIpByInetName(QString inetName)
+{
+    QString ret;
+    cmdRes res=  this->RunScript("/home/tester/devel/wipp/./getIpAddressByInterface.sh",inetName);
+    QStringList ips = res.std_out.split('\n');
+    if(ips.length()>0)
+    {
+        ret = ips[0];
+    }
+    return ret;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+
+}
+
+void MainWindow::UpdateNetInterfaces()
+{
+    interf.clear();
+    cmdRes res=  this->RunScript("/home/tester/devel/wipp/getInterfacesAndMac.sh","");
+    QStringList interfaces = res.std_out.split('\n');
+    foreach (QString t, interfaces)
+    {
+        QStringList interface = t.split(' ');
+        if(interface.length()==2)
+        {
+        netInterface temp;
+        temp.NAME = interface[0];
+        temp.MAC_ADDR = interface[1];
+        temp.IP_ADDR = this->getIpByInetName(temp.NAME);
+        interf.append(temp);
+        }
+    }
 }

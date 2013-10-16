@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Wed Oct 16 13:36:32 2013
+** Created: Wed Oct 16 18:17:43 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,7 +38,10 @@ static const uint qt_meta_data_MainWindow[] = {
      108,   11,   11,   11, 0x08,
      134,   11,   11,   11, 0x08,
      159,   11,   11,   11, 0x08,
-     183,   11,   11,   11, 0x08,
+     175,   11,   11,   11, 0x08,
+     187,   11,   11,   11, 0x08,
+     213,   11,   11,   11, 0x08,
+     238,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -48,9 +51,10 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_btnGetBSS_clicked()\0on_btnP2pFind_clicked()\0"
     "on_btnP2pPeers_clicked()\0"
     "on_btnScanBSS_2_clicked()\0"
-    "on_btnModprobe_clicked()\0"
+    "on_btnModprobe_clicked()\0updateCaption()\0"
+    "FastTimer()\0on_btnModprobeR_clicked()\0"
+    "on_btnPrintBss_clicked()\0"
     "on_pushButton_clicked()\0"
-    "on_btnModprobeR_clicked()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -65,7 +69,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_btnP2pPeers_clicked(); break;
         case 4: _t->on_btnScanBSS_2_clicked(); break;
         case 5: _t->on_btnModprobe_clicked(); break;
-        case 7: _t->on_btnModprobeR_clicked(); break;
+        case 6: _t->updateCaption(); break;
+        case 7: _t->FastTimer(); break;
+        case 8: _t->on_btnModprobeR_clicked(); break;
+        case 9: _t->on_btnPrintBss_clicked(); break;
+        case 10: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
@@ -104,9 +112,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 11;
     }
     return _id;
 }

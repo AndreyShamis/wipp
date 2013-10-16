@@ -16,4 +16,10 @@ struct wpa_cli_sta
     int     RSSI;
 };
 
+struct netInterface{
+    QString MAC_ADDR;
+    QString IP_ADDR;
+    QString NAME;
+};
+
 #endif // COMMON_H
