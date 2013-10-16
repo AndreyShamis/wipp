@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue Oct 15 23:26:45 2013
+** Created: Wed Oct 16 13:34:40 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -45,6 +45,9 @@ public:
     QListWidget *lstP2PInterfaces;
     QLabel *lblRSSI;
     QLabel *lblRSSIValue;
+    QPushButton *btnScanBSS_2;
+    QPushButton *btnModprobeR;
+    QPushButton *btnModprobe;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -95,6 +98,15 @@ public:
         lblRSSIValue = new QLabel(centralWidget);
         lblRSSIValue->setObjectName(QString::fromUtf8("lblRSSIValue"));
         lblRSSIValue->setGeometry(QRect(270, 10, 41, 16));
+        btnScanBSS_2 = new QPushButton(centralWidget);
+        btnScanBSS_2->setObjectName(QString::fromUtf8("btnScanBSS_2"));
+        btnScanBSS_2->setGeometry(QRect(520, 0, 80, 23));
+        btnModprobeR = new QPushButton(centralWidget);
+        btnModprobeR->setObjectName(QString::fromUtf8("btnModprobeR"));
+        btnModprobeR->setGeometry(QRect(390, 90, 80, 23));
+        btnModprobe = new QPushButton(centralWidget);
+        btnModprobe->setObjectName(QString::fromUtf8("btnModprobe"));
+        btnModprobe->setGeometry(QRect(390, 110, 80, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -123,6 +135,9 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "P2P Interfaces", 0, QApplication::UnicodeUTF8));
         lblRSSI->setText(QApplication::translate("MainWindow", "RSSI", 0, QApplication::UnicodeUTF8));
         lblRSSIValue->setText(QApplication::translate("MainWindow", "-100", 0, QApplication::UnicodeUTF8));
+        btnScanBSS_2->setText(QApplication::translate("MainWindow", "ls", 0, QApplication::UnicodeUTF8));
+        btnModprobeR->setText(QApplication::translate("MainWindow", "Remove IWL", 0, QApplication::UnicodeUTF8));
+        btnModprobe->setText(QApplication::translate("MainWindow", "Insert IWL", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

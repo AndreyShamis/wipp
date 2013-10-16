@@ -6,4 +6,14 @@ struct cmdRes{
     QString std_err;
 
 };
+
+struct wpa_cli_sta
+{
+    QString MAC_ADDR;
+    QString SSID;
+    int     Channel;
+    int     Frequency;
+    int     RSSI;
+};
+
 #endif // COMMON_H

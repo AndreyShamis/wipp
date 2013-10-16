@@ -29,7 +29,18 @@ private slots:
 
     void on_btnP2pPeers_clicked();
 
+    void on_btnScanBSS_2_clicked();
+
+    void on_btnModprobe_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_btnModprobeR_clicked();
+
 private:
+    void        Modprobe(QString driverName,bool remove);
+    void        PrintWPA_STA(wpa_cli_sta sta);
+    void        ls();
     void        P2PFind();
     void        getRssi(QString interface);
     void        P2PPeers();

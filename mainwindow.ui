@@ -168,6 +168,45 @@
      <string>-100</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnScanBSS_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>0</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ls</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnModprobeR">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>90</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Remove IWL</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnModprobe">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>110</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Insert IWL</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
