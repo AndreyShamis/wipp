@@ -363,3 +363,16 @@ void MainWindow::UpdateNetInterfaces()
         }
     }
 }
+
+void MainWindow::ReloadDriver()
+{
+    this->RunScript("/home/tester/devel/wipp/Scripts/restart.sh","");
+}
+
+void MainWindow::on_btnReloadDriver_clicked()
+{
+    moveToThread(&thread);
+    connect(&thread, SIGNAL(started()), this, SLOT(ReloadDriver())); //cant have parameter sorry, when using connect
+    thread.start();
+
+}

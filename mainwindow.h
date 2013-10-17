@@ -9,12 +9,15 @@
 #include <QTextStream>
 #include <unistd.h>
 #include <QTimer>
+#include <QThread>
+
 namespace Ui {
 class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
+    QThread thread;
     Q_OBJECT
 
 public:
@@ -40,6 +43,8 @@ private slots:
     void on_btnPrintBss_clicked();
 
     void on_pushButton_clicked();
+    void ReloadDriver();
+    void on_btnReloadDriver_clicked();
 
 private:
     void UpdateNetInterfaces();

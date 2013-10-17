@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Oct 16 18:18:53 2013
+** Created: Thu Oct 17 11:58:48 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -46,6 +46,7 @@ public:
     QPushButton *btnPrintBss;
     QPushButton *pushButton;
     QTreeWidget *treeLblAllInterfaces;
+    QPushButton *btnReloadDriver;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -100,7 +101,7 @@ public:
         btnPrintBss->setGeometry(QRect(730, 0, 80, 23));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(470, 10, 80, 23));
+        pushButton->setGeometry(QRect(470, 70, 80, 23));
         treeLblAllInterfaces = new QTreeWidget(centralWidget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setTextAlignment(1, Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
@@ -110,6 +111,9 @@ public:
         treeLblAllInterfaces->setSortingEnabled(true);
         treeLblAllInterfaces->header()->setDefaultSectionSize(120);
         treeLblAllInterfaces->header()->setHighlightSections(false);
+        btnReloadDriver = new QPushButton(centralWidget);
+        btnReloadDriver->setObjectName(QString::fromUtf8("btnReloadDriver"));
+        btnReloadDriver->setGeometry(QRect(470, 0, 91, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -152,6 +156,7 @@ public:
         ___qtreewidgetitem2->setText(2, QApplication::translate("MainWindow", "IP", 0, QApplication::UnicodeUTF8));
         ___qtreewidgetitem2->setText(1, QApplication::translate("MainWindow", "MAC ADDRESS ", 0, QApplication::UnicodeUTF8));
         ___qtreewidgetitem2->setText(0, QApplication::translate("MainWindow", "Name", 0, QApplication::UnicodeUTF8));
+        btnReloadDriver->setText(QApplication::translate("MainWindow", "Reload Driver", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
