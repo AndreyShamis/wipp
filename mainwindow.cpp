@@ -331,7 +331,7 @@ void MainWindow::on_btnPrintBss_clicked()
 QString MainWindow::getIpByInetName(QString inetName)
 {
     QString ret;
-    cmdRes res=  this->RunScript("/home/tester/devel/wipp/./getIpAddressByInterface.sh",inetName);
+    cmdRes res=  this->RunScript("/home/tester/devel/wipp/Scripts/getIpAddressByInterface.sh",inetName);
     QStringList ips = res.std_out.split('\n');
     if(ips.length()>0)
     {
@@ -348,7 +348,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::UpdateNetInterfaces()
 {
     interf.clear();
-    cmdRes res=  this->RunScript("/home/tester/devel/wipp/getInterfacesAndMac.sh","");
+    cmdRes res=  this->RunScript("/home/tester/devel/wipp/Scripts/getInterfacesAndMac.sh","");
     QStringList interfaces = res.std_out.split('\n');
     foreach (QString t, interfaces)
     {
