@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu Oct 17 11:58:48 2013
+** Created: Thu Oct 17 17:07:59 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -60,7 +60,7 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         txtLog = new QTextEdit(centralWidget);
         txtLog->setObjectName(QString::fromUtf8("txtLog"));
-        txtLog->setGeometry(QRect(0, 150, 541, 321));
+        txtLog->setGeometry(QRect(0, 160, 541, 301));
         btnGetBSS = new QPushButton(centralWidget);
         btnGetBSS->setObjectName(QString::fromUtf8("btnGetBSS"));
         btnGetBSS->setGeometry(QRect(650, 0, 80, 23));
@@ -84,10 +84,12 @@ public:
         btnScanBSS_2->setGeometry(QRect(470, 50, 80, 23));
         btnModprobeR = new QPushButton(centralWidget);
         btnModprobeR->setObjectName(QString::fromUtf8("btnModprobeR"));
-        btnModprobeR->setGeometry(QRect(470, 90, 80, 23));
+        btnModprobeR->setEnabled(false);
+        btnModprobeR->setGeometry(QRect(519, 90, 31, 23));
         btnModprobe = new QPushButton(centralWidget);
         btnModprobe->setObjectName(QString::fromUtf8("btnModprobe"));
-        btnModprobe->setGeometry(QRect(470, 110, 80, 23));
+        btnModprobe->setEnabled(false);
+        btnModprobe->setGeometry(QRect(519, 110, 31, 23));
         treeBSSSTA = new QTreeWidget(centralWidget);
         treeBSSSTA->setObjectName(QString::fromUtf8("treeBSSSTA"));
         treeBSSSTA->setGeometry(QRect(550, 30, 531, 271));
@@ -149,7 +151,10 @@ public:
         ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "MAC ADDRESS ", 0, QApplication::UnicodeUTF8));
         ___qtreewidgetitem->setText(0, QApplication::translate("MainWindow", "SSID", 0, QApplication::UnicodeUTF8));
         QTreeWidgetItem *___qtreewidgetitem1 = treeP2PSta->headerItem();
-        ___qtreewidgetitem1->setText(0, QApplication::translate("MainWindow", "SSID", 0, QApplication::UnicodeUTF8));
+        ___qtreewidgetitem1->setText(3, QApplication::translate("MainWindow", "Listen freq", 0, QApplication::UnicodeUTF8));
+        ___qtreewidgetitem1->setText(2, QApplication::translate("MainWindow", "MAN", 0, QApplication::UnicodeUTF8));
+        ___qtreewidgetitem1->setText(1, QApplication::translate("MainWindow", "New Column", 0, QApplication::UnicodeUTF8));
+        ___qtreewidgetitem1->setText(0, QApplication::translate("MainWindow", "MAC", 0, QApplication::UnicodeUTF8));
         btnPrintBss->setText(QApplication::translate("MainWindow", "Print", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "PushButton", 0, QApplication::UnicodeUTF8));
         QTreeWidgetItem *___qtreewidgetitem2 = treeLblAllInterfaces->headerItem();

@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>150</y>
+      <y>160</y>
       <width>541</width>
-      <height>321</height>
+      <height>301</height>
      </rect>
     </property>
    </widget>
@@ -116,11 +116,14 @@
     </property>
    </widget>
    <widget class="QPushButton" name="btnModprobeR">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>519</x>
       <y>90</y>
-      <width>80</width>
+      <width>31</width>
       <height>23</height>
      </rect>
     </property>
@@ -129,11 +132,14 @@
     </property>
    </widget>
    <widget class="QPushButton" name="btnModprobe">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>519</x>
       <y>110</y>
-      <width>80</width>
+      <width>31</width>
       <height>23</height>
      </rect>
     </property>
@@ -188,7 +194,22 @@
     </property>
     <column>
      <property name="text">
-      <string>SSID</string>
+      <string>MAC</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>New Column</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>MAN</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Listen freq</string>
      </property>
     </column>
    </widget>

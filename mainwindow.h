@@ -47,6 +47,7 @@ private slots:
     void on_btnReloadDriver_clicked();
 
 private:
+    p2p_device getP2PDeviceInfo(QString);
     void UpdateNetInterfaces();
     void GUI_UpdateInetDevices();
     QString getIpByInetName(QString inetName);

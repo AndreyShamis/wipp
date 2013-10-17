@@ -124,7 +124,7 @@ void MainWindow::P2PFind()
     if(res.std_err.length() > 0)
         ui->txtLog->append("Error["+ cmd +"]:" + res.std_err);
     else
-        ui->txtLog->append("Start Scan");
+        ui->txtLog->append("Start " + cmd);
 }
 
 void MainWindow::Modprobe(QString driverName,bool remove=false)
@@ -146,10 +146,28 @@ void MainWindow::P2PPeers()
 {
     QString cmd = this->ReadCommand("p2p_peers");
     cmdRes res = this->RunCmd(cmd);
+    QTreeWidget * tree = ui->treeP2PSta;
     if(res.std_err.length() > 0)
         ui->txtLog->append("Error["+ cmd +"]:" + res.std_err);
     else
-        ui->txtLog->append("Here is p2p peers:" + res.std_out);
+    {
+        QStringList fields = res.std_out.split('\n');
+        tree->clear();
+        foreach (QString t, fields)
+        {
+            if(t.length()>5)
+            {
+                p2p_device dev;
+                dev = getP2PDeviceInfo(t);
+                QTreeWidgetItem * topLevel = new QTreeWidgetItem();
+                topLevel->setText(0, dev.MAC_ADDR);
+                topLevel->setText(1, dev.NAME);
+                topLevel->setText(2, dev.manufacturer);
+                topLevel->setText(3, QString::number( dev.listen_freq));
+                tree->addTopLevelItem(topLevel);
+            }
+        }
+    }
 }
 
 void MainWindow::BSSScanResult()
@@ -280,6 +298,7 @@ void MainWindow::on_btnScanBSS_clicked()
 void MainWindow::updateCaption()
 {
     this->BSSScanResult();
+    this->P2PPeers();
 }
 
 void MainWindow::on_btnGetBSS_clicked()
@@ -345,6 +364,41 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
+p2p_device MainWindow::getP2PDeviceInfo(QString MAC)
+{
+    p2p_device ret ;
+    ret.MAC_ADDR = MAC;
+    cmdRes res=  this->RunScript("/home/tester/devel/wipp/Scripts/getP2pPeerInfo.sh",MAC);
+    QStringList info = res.std_out.split('\n');
+    foreach (QString t, info)
+    {
+        QStringList params = t.split('=');
+
+        if(params.length() == 2)
+        {
+            if(params[0] == "device_name")
+            {
+
+                ret.NAME = params[1];
+            }
+            else if(params[0] == "listen_freq")
+            {
+                ret.listen_freq = params[1].toInt();
+            }
+            else if(params[0] == "wps_method")
+            {
+                ret.wps_method = params[1];
+            }
+            else if(params[0] == "manufacturer")
+            {
+                ret.manufacturer = params[1];
+            }
+        }
+    }
+
+    return ret;
+}
+
 void MainWindow::UpdateNetInterfaces()
 {
     interf.clear();
@@ -371,8 +425,10 @@ void MainWindow::ReloadDriver()
 
 void MainWindow::on_btnReloadDriver_clicked()
 {
-    moveToThread(&thread);
-    connect(&thread, SIGNAL(started()), this, SLOT(ReloadDriver())); //cant have parameter sorry, when using connect
-    thread.start();
+    //thread.exit(0);
+    //moveToThread(&thread);
+    //connect(&thread, SIGNAL(started()), this, SLOT(ReloadDriver())); //cant have parameter sorry, when using connect
+    //thread.start();
+    this->ReloadDriver();
 
 }

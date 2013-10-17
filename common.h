@@ -22,4 +22,14 @@ struct netInterface{
     QString NAME;
 };
 
+
+struct p2p_device
+{
+    QString MAC_ADDR;
+    QString NAME;
+    int listen_freq;
+    QString wps_method;
+    QString manufacturer;
+};
+
 #endif // COMMON_H
